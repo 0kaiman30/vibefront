@@ -8,7 +8,7 @@ export interface ChatResponse {
 
 const API_URL =
   import.meta.env.VITE_CHAT_ENDPOINT ||
-  "http://192.168.0.112:8000/api/analyze/";
+  "https://web-production-b7d17.up.railway.app/api/analyze/";
 
 export async function sendChat(request: ChatRequest): Promise<ChatResponse> {
   const res = await fetch(API_URL, {

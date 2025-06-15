@@ -82,6 +82,18 @@ function deleteChat(id: string) {
   }
 }
 
+function resetChats() {
+  chats.value = [
+    {
+      id: Date.now().toString(),
+      title: "New chat",
+      messages: [GREET],
+    },
+  ];
+  currentChatId.value = chats.value[0].id;
+  localStorage.removeItem("chats");
+}
+
 // Сохраняем чаты при каждом изменении
 watch(
   chats,
@@ -99,5 +111,6 @@ export function useChats() {
     selectChat,
     addMessage,
     deleteChat,
+    resetChats,
   };
 }

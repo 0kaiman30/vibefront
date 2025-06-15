@@ -3,13 +3,19 @@ import { ref } from "vue";
 import Input from "@/shared/ui/Input.vue";
 import Button from "@/shared/ui/Button.vue";
 import { useRouter } from "vue-router";
+import Modal from "@/shared/ui/Modal.vue";
 
 const router = useRouter();
 
 const email = ref("");
 const password = ref("");
+const error = ref(false);
 
 function submit() {
+  if (!email.value.trim() || !password.value.trim()) {
+    error.value = true;
+    return;
+  }
   const fakeToken = Date.now().toString();
   localStorage.setItem("token", fakeToken);
   localStorage.setItem("email", email.value);
@@ -31,6 +37,13 @@ function submit() {
         Don't have an account?
         <router-link class="link" to="/register">Sign up</router-link>
       </p>
+      <Modal :open="error" @close="error = false">
+        <h3 class="modal-title">Fill in all fields</h3>
+        <p>Please enter email and password.</p>
+        <Button class="btn-gradient w-full" @click="error = false"
+          >Got it</Button
+        >
+      </Modal>
     </div>
   </section>
 </template>

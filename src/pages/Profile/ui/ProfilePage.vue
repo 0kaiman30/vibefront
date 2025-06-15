@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
+import { useChats } from "@/entities/chat/model/useChats";
 
 const router = useRouter();
+const { resetChats } = useChats();
 
 const name = ref(localStorage.getItem("name") || "Mr. Asman");
 const email = ref(localStorage.getItem("email") || "example@mail.com");
@@ -16,6 +18,8 @@ function logout() {
   localStorage.removeItem("name");
   localStorage.removeItem("email");
   localStorage.removeItem("subscription");
+  localStorage.removeItem("chats");
+  resetChats();
   router.push("/");
 }
 </script>

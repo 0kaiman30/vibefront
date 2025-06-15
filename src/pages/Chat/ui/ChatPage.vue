@@ -66,9 +66,11 @@ function createNewChat() {
   flex: 1;
   position: relative;
   overflow-x: hidden;
+  height: calc(100vh - 60px); /* 60px = высота AppHeader */
+  overflow: hidden;
 }
 .side {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
@@ -104,7 +106,7 @@ function createNewChat() {
   font-size: 14px;
 }
 .toggle {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -116,16 +118,16 @@ function createNewChat() {
   height: 32px;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  z-index: 1101;
+  z-index: 1200;
 }
 .overlay {
-  position: absolute;
-  left: 0;
+  position: fixed;
+  left: 300px; /* ширина сайдбара */
   top: 0;
-  width: 100%;
+  width: calc(100% - 300px);
   height: 100%;
   backdrop-filter: blur(4px);
-  z-index: 900;
+  z-index: 1150; /* выше формы ввода (1100) и ниже кнопки (1200) */
 }
 .chat-list {
   list-style: none;
@@ -170,5 +172,17 @@ function createNewChat() {
     top: 60px;
     transform: translate(-50%, 0);
   }
+  .overlay {
+    left: 80vw;
+    width: 20vw;
+  }
+}
+
+.chat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
 }
 </style>

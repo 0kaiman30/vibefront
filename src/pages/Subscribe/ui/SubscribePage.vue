@@ -1,16 +1,26 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
 import Modal from "@/shared/ui/Modal.vue";
 import Input from "@/shared/ui/Input.vue";
 import Button from "@/shared/ui/Button.vue";
 
+const router = useRouter();
+
 const open = ref(false);
-const activePlan = ref("");
+const success = ref(false);
+const error = ref(false);
+const needLogin = ref(false);
+const activePlan = ref<any>(null);
 const card = ref("");
 const date = ref("");
 const cvv = ref("");
 
-function openModal(plan: string) {
+function openModal(plan: any) {
+  if (!localStorage.getItem("token")) {
+    needLogin.value = true;
+    return;
+  }
   activePlan.value = plan;
   open.value = true;
 }
@@ -18,10 +28,25 @@ function close() {
   open.value = false;
 }
 function pay() {
-  localStorage.setItem("subscription", activePlan.value);
-  alert("Thank you for your purchase!");
-  close();
+  if (!activePlan.value) return;
+  if (!canPay.value) {
+    error.value = true;
+    return;
+  }
+  localStorage.setItem("subscription", activePlan.value.name);
+  card.value = date.value = cvv.value = "";
+  open.value = false;
+  success.value = true;
 }
+
+const activePrice = computed(() => activePlan.value?.price ?? "");
+
+const canPay = computed(
+  () =>
+    card.value.trim().length >= 12 &&
+    date.value.trim().length >= 4 &&
+    cvv.value.trim().length >= 3
+);
 
 const plans = [
   {
@@ -55,7 +80,7 @@ const plans = [
         <ul class="benefits">
           <li v-for="b in plan.benefits" :key="b">{{ b }}</li>
         </ul>
-        <Button class="btn-gradient w-full" @click="openModal(plan.name)">
+        <Button class="btn-gradient w-full" @click="openModal(plan)">
           Subscribe
         </Button>
       </div>
@@ -70,8 +95,50 @@ const plans = [
         <Input placeholder="MM/YY" v-model="date" />
         <Input placeholder="CVV" v-model="cvv" />
       </div>
-      <Button type="submit" class="btn-gradient w-full">Pay $9.99</Button>
+      <Button type="submit" class="btn-gradient w-full"
+        >Pay {{ activePrice }}</Button
+      >
     </form>
+  </Modal>
+
+  <Modal :open="success" @close="success = false">
+    <div class="success-modal">
+      <div class="icon">🎉</div>
+      <h3 class="modal-title">Congratulations!</h3>
+      <p>
+        You have successfully subscribed to the
+        <strong>{{ activePlan?.name }}</strong> plan.
+      </p>
+      <Button class="btn-gradient w-full" @click="success = false"
+        >Awesome!</Button
+      >
+    </div>
+  </Modal>
+
+  <Modal :open="error" @close="error = false">
+    <h3 class="modal-title">Fill in all fields</h3>
+    <p>
+      Please enter a valid card number (16 digits), expiry date (MM/YY) and CVV
+      (3 digits).
+    </p>
+    <Button class="btn-gradient w-full" @click="error = false">Got it</Button>
+  </Modal>
+
+  <Modal :open="needLogin" @close="needLogin = false">
+    <h3 class="modal-title">Please sign in</h3>
+    <p>You must be logged in to purchase a subscription.</p>
+    <div class="login-action">
+      <Button
+        class="btn-gradient w-full"
+        @click="
+          () => {
+            needLogin = false;
+            router.push('/login');
+          }
+        "
+        >Log in</Button
+      >
+    </div>
   </Modal>
 </template>
 
@@ -151,6 +218,18 @@ const plans = [
 }
 .sub-card .btn-gradient {
   margin-top: auto;
+}
+.success-modal {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.success-modal .icon {
+  font-size: 3rem;
+}
+.login-action {
+  margin-top: 16px;
 }
 
 @media (max-width: 600px) {

@@ -27,10 +27,14 @@ function send() {
   gap: 8px;
   padding: 16px;
   border-top: 1px solid var(--border);
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 850px;
   background: var(--bg-secondary);
-  z-index: 5;
+  z-index: 1100;
   border-radius: 12px 12px 0 0;
 }
 </style>

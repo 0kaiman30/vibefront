@@ -152,4 +152,17 @@ const plans = [
 .sub-card .btn-gradient {
   margin-top: auto;
 }
+
+@media (max-width: 600px) {
+  .plans {
+    grid-template-columns: 1fr;
+  }
+  .sub-card {
+    padding: 32px 24px;
+    min-height: auto;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+}
 </style>

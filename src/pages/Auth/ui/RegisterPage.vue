@@ -100,4 +100,16 @@ function submit() {
 .link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 20px 10px;
+  }
+  .auth-card {
+    padding: 28px 20px;
+  }
+  .auth-title {
+    font-size: 1.6rem;
+  }
+}
 </style>

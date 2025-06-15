@@ -65,4 +65,16 @@ p {
     opacity: 1;
   }
 }
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .cta {
+    width: 100%;
+  }
+}
 </style>

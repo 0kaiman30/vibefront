@@ -161,4 +161,14 @@ function createNewChat() {
 .chat-list li .delete:hover {
   opacity: 1;
 }
+
+@media (max-width: 600px) {
+  .side {
+    width: 80vw;
+  }
+  .toggle {
+    top: 60px;
+    transform: translate(-50%, 0);
+  }
+}
 </style>

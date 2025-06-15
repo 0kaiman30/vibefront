@@ -134,4 +134,16 @@ function logout() {
   background: #fff;
   color: var(--primary-color);
 }
+
+@media (max-width: 480px) {
+  .profile-page {
+    padding: 20px 10px;
+  }
+  .profile-card {
+    padding: 28px 20px;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+}
 </style>

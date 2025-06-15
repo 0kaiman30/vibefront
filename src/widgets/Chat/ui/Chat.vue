@@ -34,28 +34,20 @@ async function sendMessage(text: string) {
   };
   addMessage(userMessage);
 
-  const assistantMessage: Message = {
-    id: (Date.now() + 1).toString(),
-    role: "assistant",
-    content: "",
-  };
-  addMessage(assistantMessage);
-
   try {
     const { reply } = await sendChat({ message: text });
-    const words = reply.split(/\s+/);
-    let index = 0;
-    const interval = setInterval(() => {
-      const chunk = words.slice(index, index + 3).join(" ");
-      assistantMessage.content += (assistantMessage.content ? " " : "") + chunk;
-      index += 3;
-      if (index >= words.length) {
-        clearInterval(interval);
-      }
-    }, 500);
+    addMessage({
+      id: (Date.now() + 1).toString(),
+      role: "assistant",
+      content: reply,
+    });
   } catch (e) {
     console.error(e);
-    assistantMessage.content = "Server error. Please try again later.";
+    addMessage({
+      id: (Date.now() + 1).toString(),
+      role: "assistant",
+      content: "Server error. Please try again later.",
+    });
   }
 }
 
@@ -78,7 +70,9 @@ onMounted(() => {
     <template v-else>
       <div class="need-login">
         <p>You must be logged in to send messages.</p>
-        <Button class="btn-gradient" @click="router.push('/login')">Log in</Button>
+        <Button class="btn-gradient" @click="router.push('/login')"
+          >Log in</Button
+        >
       </div>
     </template>
   </div>

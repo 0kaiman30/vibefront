@@ -20,16 +20,16 @@ function submit() {
 <template>
   <section class="auth-page">
     <div class="auth-card slide-up-enter-active">
-      <h2 class="auth-title text-gradient">Добро пожаловать!</h2>
-      <p class="subtitle">Войдите, чтобы начать общаться с PenisAi</p>
+      <h2 class="auth-title text-gradient">Welcome!</h2>
+      <p class="subtitle">Log in to start chatting with AsmanAI</p>
       <form @submit.prevent="submit" class="auth-form">
         <Input v-model="email" placeholder="Email" />
-        <Input v-model="password" placeholder="Пароль" type="password" />
-        <Button type="submit" class="btn-gradient w-full">Войти</Button>
+        <Input v-model="password" placeholder="Password" type="password" />
+        <Button type="submit" class="btn-gradient w-full">Log in</Button>
       </form>
       <p class="alt">
-        Нет аккаунта?
-        <router-link class="link" to="/register">Зарегистрируйтесь</router-link>
+        Don't have an account?
+        <router-link class="link" to="/register">Sign up</router-link>
       </p>
     </div>
   </section>

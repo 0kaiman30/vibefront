@@ -19,29 +19,25 @@ function close() {
 }
 function pay() {
   localStorage.setItem("subscription", activePlan.value);
-  alert("Спасибо за покупку!");
+  alert("Thank you for your purchase!");
   close();
 }
 
 const plans = [
   {
     name: "START",
-    price: "$4.99 / месяц",
-    benefits: ["100 запросов в день", "Обычная очередь"],
+    price: "$4.99 / month",
+    benefits: ["100 requests per day", "Normal queue"],
   },
   {
     name: "PRO",
-    price: "$9.99 / месяц",
-    benefits: ["Безлимитные запросы", "Приоритетная очередь", "Новые функции"],
+    price: "$9.99 / month",
+    benefits: ["Unlimited requests", "Priority queue", "New features"],
   },
   {
     name: "ULTIMATE",
-    price: "$19.99 / месяц",
-    benefits: [
-      "Безлимит +",
-      "Самая высокая приоритетность",
-      "Ранний доступ к beta",
-    ],
+    price: "$19.99 / month",
+    benefits: ["Unlimited +", "Highest priority", "Beta early access"],
   },
 ];
 </script>
@@ -59,22 +55,22 @@ const plans = [
         <ul class="benefits">
           <li v-for="b in plan.benefits" :key="b">{{ b }}</li>
         </ul>
-        <Button class="btn-gradient w-full" @click="openModal(plan.name)"
-          >Оформить</Button
-        >
+        <Button class="btn-gradient w-full" @click="openModal(plan.name)">
+          Subscribe
+        </Button>
       </div>
     </div>
   </section>
 
   <Modal :open="open" @close="close">
-    <h3 class="modal-title">Данные карты</h3>
+    <h3 class="modal-title">Card Details</h3>
     <form class="pay-form" @submit.prevent="pay">
-      <Input placeholder="Номер карты" v-model="card" />
+      <Input placeholder="Card number" v-model="card" />
       <div class="row">
         <Input placeholder="MM/YY" v-model="date" />
         <Input placeholder="CVV" v-model="cvv" />
       </div>
-      <Button type="submit" class="btn-gradient w-full">Оплатить $9.99</Button>
+      <Button type="submit" class="btn-gradient w-full">Pay $9.99</Button>
     </form>
   </Modal>
 </template>

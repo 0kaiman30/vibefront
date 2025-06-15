@@ -4,10 +4,10 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const name = ref(localStorage.getItem("name") || "Mr. Penis");
+const name = ref(localStorage.getItem("name") || "Mr. Asman");
 const email = ref(localStorage.getItem("email") || "example@mail.com");
 const subscription = ref(
-  localStorage.getItem("subscription") || "Нет подписки"
+  localStorage.getItem("subscription") || "No subscription"
 );
 const planClass = computed(() => subscription.value.toLowerCase());
 
@@ -23,11 +23,11 @@ function logout() {
 <template>
   <section class="profile-page">
     <div :class="['profile-card', planClass, 'slide-up-enter-active']">
-      <h2 class="title text-gradient">Профиль</h2>
-      <p><strong>Имя:</strong> {{ name }}</p>
+      <h2 class="title text-gradient">Profile</h2>
+      <p><strong>Name:</strong> {{ name }}</p>
       <p><strong>Email:</strong> {{ email }}</p>
-      <p><strong>Подписка:</strong> {{ subscription }}</p>
-      <button class="logout" @click="logout">Выйти</button>
+      <p><strong>Subscription:</strong> {{ subscription }}</p>
+      <button class="logout" @click="logout">Logout</button>
     </div>
   </section>
 </template>

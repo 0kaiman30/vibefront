@@ -10,9 +10,9 @@ function goChat() {
 <template>
   <section class="hero">
     <div class="hero-content">
-      <h1 class="hero-title">PenisAi</h1>
-      <p>Новый опыт общения с ИИ в вашем браузере.</p>
-      <button class="cta btn-gradient" @click="goChat">Попробовать чат</button>
+      <h1 class="hero-title">AsmanAI</h1>
+      <p>A new AI chat experience in your browser.</p>
+      <button class="cta btn-gradient" @click="goChat">Try Chat</button>
     </div>
   </section>
 </template>

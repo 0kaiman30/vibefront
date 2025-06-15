@@ -21,35 +21,35 @@ function goProfile() {
 
 <template>
   <header class="header">
-    <div class="logo" @click="go('/')">PenisAi</div>
+    <div class="logo" @click="go('/')">AsmanAI</div>
     <nav class="nav">
       <a
         class="nav-link"
         :class="{ active: route.path === '/' }"
         @click.prevent="go('/')"
         href="#"
-        >Главная</a
+        >Home</a
       >
       <a
         class="nav-link"
         :class="{ active: route.path === '/chat' }"
         @click.prevent="go('/chat')"
         href="#"
-        >Чат</a
+        >Chat</a
       >
       <a
         class="nav-link"
         :class="{ active: route.path === '/subscriptions' }"
         @click.prevent="go('/subscriptions')"
         href="#"
-        >Подписки</a
+        >Subscriptions</a
       >
       <a
         class="nav-link"
         :class="{ active: route.path === '/profile' }"
         @click.prevent="goProfile"
         href="#"
-        >Профиль</a
+        >Profile</a
       >
     </nav>
     <ThemeToggle />

@@ -22,19 +22,19 @@ function submit() {
 <template>
   <section class="auth-page">
     <div class="auth-card slide-up-enter-active">
-      <h2 class="auth-title text-gradient">Создать аккаунт</h2>
-      <p class="subtitle">Зарегистрируйтесь, чтобы начать работу с PenisAi</p>
+      <h2 class="auth-title text-gradient">Create Account</h2>
+      <p class="subtitle">Sign up to get started with AsmanAI</p>
       <form @submit.prevent="submit" class="auth-form">
-        <Input v-model="name" placeholder="Имя" />
+        <Input v-model="name" placeholder="Name" />
         <Input v-model="email" placeholder="Email" />
-        <Input v-model="password" placeholder="Пароль" type="password" />
-        <Button type="submit" class="btn-gradient w-full"
-          >Создать аккаунт</Button
-        >
+        <Input v-model="password" placeholder="Password" type="password" />
+        <Button type="submit" class="btn-gradient w-full">
+          Create Account
+        </Button>
       </form>
       <p class="alt">
-        Уже есть аккаунт?
-        <router-link class="link" to="/login">Войти</router-link>
+        Already have an account?
+        <router-link class="link" to="/login">Log in</router-link>
       </p>
     </div>
   </section>

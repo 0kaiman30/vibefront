@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+:root {
+  /* Light theme (vibrant) */
+  --bg: #fdfcff;
+  --bg-secondary: #ffffff;
+  --text: #1a1c21;
+  --text-secondary: #5b5d67;
+  --border: #dfe1e7;
+  --primary-gradient: linear-gradient(135deg, #ff6bcb 0%, #7366ff 100%);
+  --primary-color: #7366ff;
+}
+
+html.dark {
+  --bg: #0d1117;
+  --bg-secondary: #161b22;
+  --text: #e6e6e6;
+  --text-secondary: #9a9a9a;
+  --border: #444654;
+  --primary-gradient: linear-gradient(135deg, #6a5af9 0%, #d66efd 100%);
+  --primary-color: #a18bff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-gradient {
+  background: var(--primary-gradient);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  animation: slideUp 0.4s ease;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Decorative blurred circles */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  filter: blur(160px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: -1;
+}
+body::before {
+  top: -120px;
+  left: -120px;
+}
+body::after {
+  bottom: -120px;
+  right: -120px;
+}

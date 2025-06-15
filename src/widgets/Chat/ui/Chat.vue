@@ -9,7 +9,7 @@ import { useChats } from "@/entities/chat/model/useChats";
 const GREET: Message = {
   id: "greet",
   role: "assistant",
-  content: "Привет! Я PenisAi. Чем могу помочь?",
+  content: "Hello! I'm AsmanAi. How can I help you?",
 };
 
 const { chats, currentChatId, addChat, addMessage } = useChats();
@@ -41,7 +41,7 @@ async function sendMessage(text: string) {
     addMessage({
       id: (Date.now() + 1).toString(),
       role: "assistant",
-      content: "Ошибка сервера. Попробуйте позже.",
+      content: "Server error. Please try again later.",
     });
   }
 }

@@ -9,7 +9,7 @@ const sortedChats = computed(() => chats.value);
 
 <template>
   <aside class="chat-list">
-    <button class="new-chat btn-gradient" @click="addChat">+ Новый чат</button>
+    <button class="new-chat btn-gradient" @click="addChat">+ New chat</button>
     <ul>
       <li
         v-for="c in sortedChats"

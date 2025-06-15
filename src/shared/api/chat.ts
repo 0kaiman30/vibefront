@@ -20,7 +20,7 @@ export async function sendChat(request: ChatRequest): Promise<ChatResponse> {
   });
 
   if (!res.ok) {
-    throw new Error("Ошибка при обращении к серверу");
+    throw new Error("Failed to reach the server");
   }
 
   const data = await res.json();

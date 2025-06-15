@@ -28,7 +28,7 @@ function createNewChat() {
   <div class="chat-layout">
     <transition name="sidebar">
       <aside v-if="showSidebar" class="side">
-        <button class="new-chat" @click="createNewChat">+ Новый чат</button>
+        <button class="new-chat" @click="createNewChat">+ New chat</button>
         <ul class="chat-list">
           <li
             v-for="c in chats"
@@ -54,8 +54,8 @@ function createNewChat() {
       {{ showSidebar ? "⟨" : "⟩" }}
     </button>
     <Modal :open="showLimitModal" @close="showLimitModal = false">
-      <h3>Лимит чатов</h3>
-      <p>Максимальное количество чатов достигнуто (10).</p>
+      <h3>Chats limit</h3>
+      <p>The maximum number of chats (10) has been reached.</p>
     </Modal>
   </div>
 </template>

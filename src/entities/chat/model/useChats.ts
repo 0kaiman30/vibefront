@@ -5,7 +5,7 @@ import type { Message } from "@/entities/message/model/types";
 const GREET: Message = {
   id: "greet",
   role: "assistant",
-  content: "Привет! Я PenisAi. Чем могу помочь?",
+  content: "Hello! I'm AsmanAi. How can I help you?",
 };
 
 // Загружаем сохранённые чаты из localStorage (не более 5)
@@ -22,7 +22,7 @@ try {
 if (initialChats.length === 0) {
   initialChats.push({
     id: Date.now().toString(),
-    title: "Новый чат",
+    title: "New chat",
     messages: [GREET],
   });
 }
@@ -38,7 +38,7 @@ function addChat(): string | null {
   const id = Date.now().toString();
   const chat: Chat = {
     id,
-    title: "Новый чат",
+    title: "New chat",
     messages: [GREET],
   };
   chats.value.unshift(chat);
@@ -54,7 +54,7 @@ function addMessage(message: Message) {
   const chat = chats.value.find((c) => c.id === currentChatId.value);
   if (!chat) return;
   chat.messages.push(message);
-  if (chat.title === "Новый чат" && message.role === "user") {
+  if (chat.title === "New chat" && message.role === "user") {
     chat.title =
       message.content.slice(0, 20) + (message.content.length > 20 ? "…" : "");
   }
@@ -74,7 +74,7 @@ function deleteChat(id: string) {
       const newId = Date.now().toString();
       chats.value.push({
         id: newId,
-        title: "Новый чат",
+        title: "New chat",
         messages: [GREET],
       });
       currentChatId.value = newId;

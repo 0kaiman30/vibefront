@@ -77,7 +77,7 @@ function createNewChat() {
   width: 300px;
   background: var(--bg-secondary);
   border-right: 1px solid var(--border);
-  z-index: 1000;
+  z-index: 1120;
   /* тень для отделения */
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.08);
 }
@@ -122,12 +122,12 @@ function createNewChat() {
 }
 .overlay {
   position: fixed;
-  left: 300px; /* ширина сайдбара */
+  /* left: 300px; ширина сайдбара */
   top: 0;
-  width: calc(100% - 300px);
+  width: calc(100%);
   height: 100%;
   backdrop-filter: blur(4px);
-  z-index: 1150; /* выше формы ввода (1100) и ниже кнопки (1200) */
+  z-index: 1101 ; /* выше формы ввода (1100) и ниже кнопки (1200) */
 }
 .chat-list {
   list-style: none;

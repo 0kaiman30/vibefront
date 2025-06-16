@@ -127,7 +127,7 @@ function createNewChat() {
   width: calc(100%);
   height: 100%;
   backdrop-filter: blur(4px);
-  z-index: 1101 ; /* выше формы ввода (1100) и ниже кнопки (1200) */
+  z-index: 1101; /* выше формы ввода (1100) и ниже кнопки (1200) */
 }
 .chat-list {
   list-style: none;
